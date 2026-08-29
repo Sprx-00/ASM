@@ -4,6 +4,8 @@ Assembly basics to Advanced
 I too am learning x86 assembly.
 Any progress will be posted here
 
+** Please refer to cheatsheet.txt for more info on x86 registers and variables
+
 # First
 This folder contains all the basic programs like hello world, user input, age input etc
 
