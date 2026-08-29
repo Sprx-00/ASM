@@ -1,0 +1,245 @@
+RAX - Return value
+
+RSI - Source Address
+
+RDI - fd, Dest
+
+RBX - General purpose
+
+RCX - Counter
+
+RDX - Syscall argument / Data
+
+RDI - Destinstion
+
+RSP - Stack pointer (Points to top of the stack)
+
+RBP - Base pointer
+
+RIP - Instruction pointer
+
+R8 - General purpose
+
+R9 - General purpose
+
+R10 - General purpose
+
+R11 - General purpose
+
+R12 - General purpose
+
+R13 - General purpose
+
+R14 - General purpose
+
+R15 - General purpose
+
+----------------------------------------
+
+je - jump if comp was equ
+
+inc - + 1
+
+dec - -1
+
+xor - 0
+
+imul - a x b
+
+div - rax / rbx
+
+test - rax and rax 
+
+jmp - jump unconditionally
+
+je - jump if equ
+
+jz - jump if zero
+
+jne - jump if NOT equ
+
+jnz - jump if NOT zero
+
+call - call a function
+
+push - push register into stack
+
+pop - take register back from stack
+
+-------------------------------------------
+
+╔════════════════════════════════════════════════════════════════════╗
+║                    x86-64 ASSEMBLY CHEAT SHEET                     ║
+╚════════════════════════════════════════════════════════════════════╝
+
+
+╔════════════════════════════════════════════════════════════════════╗
+║                         REGISTERS                                  ║
+╠══════════╦═════════════════════════════════════════════════════════╣
+║  RAX     ║ Accumulator / return value / syscall number             ║
+║  RBX     ║ General purpose                                         ║
+║  RCX     ║ Counter / general purpose                               ║
+║  RDX     ║ Data / 3rd argument / division                          ║
+║  RSI     ║ 2nd argument / source                                   ║
+║  RDI     ║ 1st argument / destination                              ║
+║  RSP     ║ Stack pointer                                           ║
+║  RBP     ║ Stack frame / base pointer                              ║
+║  R8      ║ 5th argument                                            ║
+║  R9      ║ 6th argument                                            ║
+║  R10     ║ General purpose                                         ║
+║  R11     ║ General purpose                                         ║
+║  R12     ║ General purpose                                         ║
+║  R13     ║ General purpose                                         ║
+║  R14     ║ General purpose                                         ║
+║  R15     ║ General purpose                                         ║
+║  RIP     ║ Instruction pointer — address of next instruction       ║
+║  RFLAGS  ║ CPU status flags                                        ║
+╚══════════╩═════════════════════════════════════════════════════════╝
+
+
+╔═════════════════════════════════════════════════════════════════════╗
+║                        INSTRUCTIONS                                 ║
+╠══════════╦══════════════════════════════════════════════════════════╣
+║  mov     ║ Copy value                                               ║
+║  add     ║ Addition                                                 ║
+║  sub     ║ Subtraction                                              ║
+║  inc     ║ Increase by 1                                            ║
+║  dec     ║ Decrease by 1                                            ║
+║  xor     ║ Bitwise XOR                                              ║
+║  imul    ║ Signed multiplication                                    ║
+║  div     ║ Unsigned division                                        ║
+║  cmp     ║ Compare two values                                       ║
+║  test    ║ Bitwise AND for testing flags                            ║
+║  jmp     ║ Unconditional jump                                       ║
+║  je      ║ Jump if equal                                            ║
+║  jne     ║ Jump if not equal                                        ║
+║  jg      ║ Jump if greater                                          ║
+║  jl      ║ Jump if less                                             ║
+║  call    ║ Call a function                                          ║
+║  ret     ║ Return from function                                     ║
+║  push    ║ Put value onto stack                                     ║
+║  pop     ║ Get value from stack                                     ║
+║  syscall ║ Request a service from the Linux kernel                  ║
+╚══════════╩══════════════════════════════════════════════════════════╝
+
+
+╔══════════════════════════════════════════════════════════════════════╗
+║                         NASM SECTIONS                                ║
+╠══════════╦═══════════════════════════════════════════════════════════╣
+║ .text    ║ Executable code                                           ║
+║          ║ mov, add, syscall, jmp, etc.                              ║
+║          ║                                                           ║
+║ .data    ║ Initialized data                                          ║
+║          ║ numbers, strings, flags, constants                        ║
+║          ║                                                           ║
+║ .bss     ║ Reserved / uninitialized memory                           ║
+║          ║ buffers, empty arrays, user input                         ║
+║          ║                                                           ║
+║ .rodata  ║ Read-only data                                            ║
+║          ║ constants / strings that shouldn't be modified            ║
+╚══════════╩═══════════════════════════════════════════════════════════╝
+
+
+╔══════════════════════════════════════════════════════════════════════╗
+║                       NASM DIRECTIVES                                ║
+╠══════════╦═══════════════════════════════════════════════════════════╣
+║ db       ║ Define 1 byte                                             ║
+║ dw       ║ Define 2 bytes                                            ║
+║ dd       ║ Define 4 bytes                                            ║
+║ dq       ║ Define 8 bytes                                            ║
+║          ║                                                           ║
+║ resb     ║ Reserve bytes                                             ║
+║ resw     ║ Reserve 2-byte values                                     ║
+║ resd     ║ Reserve 4-byte values                                     ║
+║ resq     ║ Reserve 8-byte values                                     ║
+║          ║                                                           ║
+║ equ      ║ Define a constant                                         ║
+║ global   ║ Make a symbol visible to the linker                       ║
+║ section  ║ Select/switch to a section                                ║
+╚══════════╩═══════════════════════════════════════════════════════════╝
+
+
+╔══════════════════════════════════════════════════════════════════════╗
+║                      PROGRAM STRUCTURE                               ║
+╠══════════════════════════════════════════════════════════════════════╣
+║                                                                      ║
+║  section .data                                                       ║
+║      initialized variables                                           ║
+║                                                                      ║
+║  section .bss                                                        ║
+║      reserved memory                                                 ║
+║                                                                      ║
+║  section .text                                                       ║
+║      global _start                                                   ║
+║                                                                      ║
+║  _start:                                                             ║
+║      instructions                                                    ║
+║                                                                      ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+
+╔══════════════════════════════════════════════════════════════════════╗
+║                         EASY MEMORY                                  ║
+╠══════════════════════════════════════════════════════════════════════╣
+║                                                                      ║
+║  .text    →  DO stuff                                                ║
+║  .data    →  HAVE initialized stuff                                  ║
+║  .bss     →  NEED empty space                                        ║
+║  .rodata  →  HAVE read-only stuff                                    ║
+║                                                                      ║
+║  _start   →  START HERE                                              ║
+║                                                                      ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+┌─────────────────────────────────────────────┐
+│          NASM x86-64 SECTIONS               │
+├──────────┬──────────────────────────────────┤
+│ .text    │ Executable instructions          │
+│          │ mov, add, syscall, jmp, etc.     │
+├──────────┼──────────────────────────────────┤
+│ .data    │ Initialized/read-write data      │
+│          │ numbers, strings, flags, etc.    │
+├──────────┼──────────────────────────────────┤
+│ .bss     │ Uninitialized/reserved memory    │
+│          │ buffers, empty arrays, etc.      │
+├──────────┼──────────────────────────────────┤
+│ .rodata  │ Read-only data/constants         │
+│          │ Often used for constant strings  │
+└──────────┴──────────────────────────────────┘
+
+┌─────────────────────────────────────────────┐
+│              IMPORTANT DIRECTIVES           │
+├──────────┬───────────────┬──────────────────┤
+│ db       │ 1 byte        │ define byte      │
+│ dw       │ 2 bytes       │ define word      │
+│ dd       │ 4 bytes       │ define dword     │
+│ dq       │ 8 bytes       │ define qword     │
+│          │               │                  │
+│ resb     │ 1 byte each   │ reserve bytes    │
+│ resw     │ 2 bytes each  │ reserve words    │
+│ resd     │ 4 bytes each  │ reserve dwords   │
+│ resq     │ 8 bytes each  │ reserve qwords   │
+│          │               │                  │
+│ equ      │ constant      │ calculate/define │
+│ global   │ visibility    │ expose a symbol  │
+│ section  │ section       │ switch section   │
+└──────────┴───────────────┴──────────────────┘
+
+PROGRAM STRUCTURE
+────────────────────────────────
+
+section .data
+    initialized data
+
+section .bss
+    reserved memory
+
+section .text
+    global _start
+
+_start:
+    instructions
+
+CPU instructions       → mov, add, imul, syscall, jmp...
+Assembler directives   → section, db, dq, resb, equ, global...
+Labels                  → _start, number, buffer, message...
